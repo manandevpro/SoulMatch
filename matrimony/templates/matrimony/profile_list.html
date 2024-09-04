@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Profile List</title>
+{% endblock%}
+
+
+{% block content %}
+
+<p></p>
+<div class="container">
+    <form class="container-fluid justify-content-start">
+        <div class="column btn btn-success me-2 type="button">
+            <a href="{% url 'matrimony:new_profile' %}" class="btn btn-warning">Add Profile</a>
+        </div><hr>
+    
+        <div class="column btn btn-success me-2" type="button">
+            <a href="{% url 'matrimony:father_profile' %}" class="btn btn-warning">Add Father's Profile</a>
+        </div><hr>
+    </form>
+
+
+    <div class="row">
+        {% if profiles %}
+        {% for profile in profiles %}
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem; height: auto;">
+                <img src="{{ profile.profile_pic.url }}" class="card-img-top" alt="Profile Photo">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.name }}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="{% url 'matrimony:profile_detail' profile.id %}" class="btn btn-primary">Read More...</a>
+                </div>
+            </div>
+            <p></p>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock content %}
