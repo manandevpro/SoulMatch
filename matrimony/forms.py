@@ -14,10 +14,8 @@ def my_email_validator(email):
 
 class ContactForm(forms.Form):
     name=forms.CharField(max_length=100)
-    # email=forms.EmailField()
-    # email=forms.CharField(validators=[EmailValidator()])
-    email=forms.CharField(validators=[EmailValidator(), my_email_validator])  #Built-in & Custom validators Combined
-    verify_email = forms.CharField()                                          #Defining custom 'cleaned data'  
+    email=forms.CharField(validators=[EmailValidator(), my_email_validator])  
+    verify_email = forms.CharField()                                          
     message=forms.CharField(widget=forms.Textarea)
 
     # 2. Custom Cleaning

@@ -17,6 +17,7 @@ def ProfileDetailView(request, profile_id):
     user = request.user
     return render(request, 'matrimony/profile_detail.html', {'profile': profile, 'user': user})
 
+@login_required
 def ProfileDeleteView(request, profile_id):
     profile=Profile.objects.get(id=profile_id)
     profile.delete()
